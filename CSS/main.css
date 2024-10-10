@@ -1,0 +1,24 @@
+h4{
+    font-size: 30px;
+    text-align: center;
+}
+h5{
+    text-align: center;
+    font-size: 45px;
+}
+#hr1{
+    border: 5px solid;
+    width: 500px;
+    color: black;
+}
+#hr2{
+    color: black;
+    position:relative;
+    border: 2px dashed;
+    top: -27px;
+
+}
+header{
+    background-image: url(képek/main/header.png);
+    text-align: center;
+}

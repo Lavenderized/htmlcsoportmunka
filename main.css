@@ -1,0 +1,64 @@
+h4{
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+h5{
+    text-align: center;
+    font-size: 45px;
+    font-weight: bolder;
+}
+#hr1{
+    position: absolute;
+    top: 130px;
+    left: 700px;
+    border: 5px solid;
+    width: 500px;
+    color: black;
+}
+#hr2{
+    top: -20px;
+    color: black;
+    position:relative;
+    border: 2px dashed;
+}
+header{
+    background-image: url(képek/main/header.png);
+    background-size: 500px;
+    padding: 20px;
+    text-align: center;
+}
+#left{
+    position: fixed;
+    left: -350px;
+    top: 70px;
+    height: 1000px;
+}
+#right{
+    position: fixed;
+    right: -350px;
+    top: 70px;
+    height: 1000px;
+}
+body{
+    background-color: rgb(226, 226, 226);
+}
+#patrik{
+    font-size: 70px;
+    text-align: center;
+    position: absolute;
+    left: 740px;
+    border: 10px solid;
+    border-style:dotted;
+    border-width: 5px;
+    border-radius: 50px;
+    padding: 20px;
+}
+a{
+    color:black;
+}
+a:hover{
+    color: rgb(238, 14, 201);
+    background-clip:border-box;
+    text-align: center;
+}
