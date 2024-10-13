@@ -54,6 +54,17 @@ body{
     border-radius: 50px;
     padding: 20px;
 }
+#barna{
+    font-size: 70px;
+    text-align: center;
+    position: absolute;
+    left: 740px;
+    border: 10px solid;
+    border-style:dotted;
+    border-width: 5px;
+    border-radius: 50px;
+    padding: 20px;
+}
 a{
     color:black;
 }

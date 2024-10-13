@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="igen.css" >
+    <link rel="icon" href="képek/kifogas/kerdojel.png" type="image/x-icon">
+    <title>Kifogások</title>
+</head>
+<body>
+    <div class="test">
+        <h1>Kell egy kifogás?</h1>
+        <p id="kifogas">Nyomd meg a gombot egy kifogásért!</p>
+        <button id="kifogasGomb" onclick="generateKifogas()">Kifogás</button>
+            <div id="starRating" class="ertekeles" style="display: none;">
+                <p>Mennyire válna be ez a kifogás szerinted:</p>
+                <span class="star" onclick="rateKifogas(1)">★</span>
+                <span class="star" onclick="rateKifogas(2)">★</span>
+                <span class="star" onclick="rateKifogas(3)">★</span>
+                <span class="star" onclick="rateKifogas(4)">★</span>
+                <span class="star" onclick="rateKifogas(5)">★</span>
+            </div>
+        </div>
+    <script src="kifogas.js"></script> 
+</body>
+</html>
