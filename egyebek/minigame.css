@@ -1,0 +1,59 @@
+body{
+    background-image: url(képek/minigame/bg.png);
+    background-size: 2000px;
+}
+p{
+    font-weight:bold;
+}
+h1{
+    width: 500px;
+    padding: 5px;
+    border-radius: 500px;
+    border-style: double;
+    background-color: aliceblue;
+    text-align: center;
+    position: relative;
+    left: 670px;
+}
+#nyil{
+    width: 100px;
+    position:absolute;
+    left: 900px;
+}
+#p1{
+    padding: 10px 10px;
+    position:fixed;
+    background-color: aliceblue;
+    top: 65px;
+}
+#p2{
+    padding: 10px 10px;
+    background-color: aliceblue;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    
+}
+#p3{
+    padding: 10px 10px;
+    background-color: aliceblue;
+    position:absolute;
+    top: 65px;
+    left: 1725px;
+    
+}
+#p4{
+    position: fixed;
+    bottom: 5px;
+}
+a{
+    color: rgba(255, 255, 255, 0);
+    text-align: center;
+    padding: 15px 15px;
+}
+a:hover{
+    color: white;
+    background-color: black;
+    text-align: center;
+    padding: 15px 15px;
+}

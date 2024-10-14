@@ -23,7 +23,7 @@ h5{
     border: 2px dashed;
 }
 header{
-    background-image: url(képek/main/header.png);
+    background-image: url(egyebek/képek/main/header.png);
     background-size: 500px;
     padding: 20px;
     text-align: center;
@@ -82,7 +82,7 @@ a{
     color:black;
 }
 a:hover{
-    color: rgb(238, 14, 201);
+    color: rgb(104, 102, 119);
     background-clip:border-box;
     text-align: center;
 }
