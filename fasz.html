@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaktív Gomb Játék - 30 másodperces időzítővel, sebességmérővel és találati aránnyal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 50px;
+        }
+
+        #game-button {
+            padding: 20px;
+            font-size: 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #game-button:hover {
+            background-color: #0056b3;
+        }
+
+        #score, #timer, #speed, #accuracy {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+
+        #game-over {
+            margin-top: 30px;
+            font-size: 30px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Kattints a gombra, amíg az idő le nem jár!</h1>
+    <button id="game-button">Kattints rám!</button>
+    <p id="score">Pontszám: 0</p>
+    <p id="timer">Hátralévő idő: 30 másodperc</p>
+    <p id="speed">Átlagos kattintási sebesség: 0 kattintás/másodperc</p>
+    <p id="accuracy">Találati arány: 100%</p>
+    <p id="game-over" style="display: none;">Játék vége!</p>
+
+    <script>
+        let score = 0;
+        let timeLeft = 30;  // 30 másodperces visszaszámláló
+        let countdownStarted = false;  // Ellenőrzi, hogy elindult-e a visszaszámláló
+        let elapsedTime = 0;  // Eltelt idő (a kattintások első pillanatától számítva)
+        let totalClicks = 0;  // Az összes kattintás számolása
+        let successfulClicks = 0;  // Sikeres kattintások száma
+
+        const button = document.getElementById('game-button');
+        const scoreDisplay = document.getElementById('score');
+        const timerDisplay = document.getElementById('timer');
+        const speedDisplay = document.getElementById('speed');
+        const accuracyDisplay = document.getElementById('accuracy');
+        const gameOverDisplay = document.getElementById('game-over');
+        let countdown;
+        let clickStartTime;  // Az idő, amikor az első kattintás történt
+
+        button.addEventListener('click', function () {
+            if (!countdownStarted) {
+                countdownStarted = true;
+                clickStartTime = Date.now();  // Első kattintás időpontja
+                countdown = setInterval(function () {
+                    if (timeLeft > 0) {
+                        timeLeft--;
+                        timerDisplay.textContent = `Hátralévő idő: ${timeLeft} másodperc`;
+                    } else {
+                        clearInterval(countdown);
+                        endGame();
+                    }
+                }, 1000);
+            }
+
+            if (timeLeft > 0) {
+                // Növeld a pontszámot és a sikeres kattintásokat
+                score++;
+                successfulClicks++;
+                totalClicks++;  // Minden kattintás sikeres, ha a gombra kattint
+                scoreDisplay.textContent = `Pontszám: ${score}`;
+
+                // Változtasd meg a gomb méretét és színét véletlenszerűen
+                const randomSize = Math.floor(Math.random() * 50) + 20; // 20px és 70px között
+                const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`; // Véletlenszerű szín
+
+                button.style.fontSize = `${randomSize}px`;
+                button.style.backgroundColor = randomColor;
+
+                // Gomb mozgatása véletlenszerű helyre
+                const randomX = Math.floor(Math.random() * (window.innerWidth - 100));
+                const randomY = Math.floor(Math.random() * (window.innerHeight - 100));
+
+                button.style.position = 'absolute';
+                button.style.left = `${randomX}px`;
+                button.style.top = `${randomY}px`;
+
+                // Számítsd ki az eltelt időt (másodpercekben) az első kattintás óta
+                elapsedTime = (Date.now() - clickStartTime) / 1000;
+
+                // Számítsd ki az átlagos kattintási sebességet (kattintás/másodperc)
+                const averageSpeed = (score / elapsedTime).toFixed(2);
+                speedDisplay.textContent = `Átlagos kattintási sebesség: ${averageSpeed} kattintás/másodperc`;
+
+                // Számítsd ki a találati arányt (sikeres kattintások / összes kattintás)
+                const accuracy = ((successfulClicks / totalClicks) * 100).toFixed(2);
+                accuracyDisplay.textContent = `Találati arány: ${accuracy}%`;
+            }
+        });
+
+        // Egérkattintás a teljes képernyőn (ha nem a gombra kattintott)
+        document.addEventListener('click', function (event) {
+            if (event.target !== button && countdownStarted && timeLeft > 0) {
+                totalClicks++;  // Minden nem sikeres kattintás növeli az összes kattintást
+                const accuracy = ((successfulClicks / totalClicks) * 100).toFixed(2);
+                accuracyDisplay.textContent = `Találati arány: ${accuracy}%`;
+            }
+        });
+
+        function endGame() {
+            button.disabled = true;  // Gomb letiltása
+            gameOverDisplay.style.display = 'block';  // "Játék vége" kiírás megjelenítése
+            timerDisplay.textContent = 'Az idő lejárt!';
+            speedDisplay.textContent += ' (végső sebesség)';
+            accuracyDisplay.textContent += ' (végső találati arány)';
+        }
+    </script>
+
+</body>
+</html>
